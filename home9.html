@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Junyoung Times</title>
+    <style>
+      a {
+        color: white;
+        background-color: tomato;
+        text-decoration: none;
+        padding: 3px 5px;
+        border-radius: 5px;
+        font-size: 55px;
+        /* transition: background-color 10s ease-in-out, color 5s ease-in-out;
+        (background-color, color를 all; 로 대체) */
+        transition: color 1s cubic-bezier(0.6, 0, 0.735, 0.045),
+          border-radius 5s ease-in-out, background-color 10s ease-in-out;
+      }
+      a:hover {
+        color: tomato;
+        background-color: wheat;
+        border-radius: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#">Go home</a>
+  </body>
+</html>

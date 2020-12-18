@@ -1,0 +1,249 @@
+
+
+#2.4 Tag Attributes
+<a href="http://google.com" target="_self또는_blank">go google</a> 이라면
+a는 태그, href="http://google.com" target="_self또는_blank" 는 attribute
+
+<img src="https://i.pinimg.com/originals/c2/99/98/c299987a7b796ff7f76b5365fde7697d.jpg">
+
+
+# 3.4 Margin Part One
+    Margin border padding box
+
+
+# 3.8 Classes
+#tomato 는  id="tomato";
+.tomato 는  class="tomato";
+
+
+#3.11 Flexbox Part Two
+flexdirection
+flexbox 의 default 주축은 row(수평)이다
+flexdirection을 column을 주어 방향을 수직으로 할수있다.
+column으로하면 justify-content에 주축이 수직으로 적용된다.
+
+row 수평
+column 수직
+
+
+# 3.12 Fixed
+#idIwant {
+    position: fixed
+}
+는 레이아웃 맨 위에 위치하며 div등 박스를 고정시켜준다.
+즉; fixed는 tag(id,class,div span)을 고정시켜준다.
+
+
+# 3.13 Relative Absolute
+position: relative
+top:-10px;
+left:-10px;
+element가 처음 위치한 곳을 기준으로 수정하는것.
+예를들면 div박스를 기준으로 top,left로 -10씩 간다
+position:absolute;
+부모태그를 기준으로 top left 등을 줄수있다.
+body의 top left 등을 줄수있고 div에 relative를 주면 div 기준으로 간다.
+
+
+# 3.14 Pseudo Selectors part One
+span:nth-child(3n + 1) {
+        background-color: teal;
+3n+1번째 스팬을 계속 선택한다는 뜻.
+first-child 와 last-child 도 있고 등등이 더 많다.
+
+
+# 3.15 Combinators
+p span { }    p가 부모 span이 자식일때
+p > span { }  p의 바로밑에 span이 자식일때
+p + span { }  p의 바로밑에 span이 형제일때
+p ~ span { }  p의 밑에 span이 형제이지만 바로뒤에 오지 않을때
+
+
+# 3.16 Pseudo Selectors part Two
+HTML이 
+<input type="text" placeholder="First name" />
+<input type="text" placeholder="Last name" />
+일때,
+input[placeholder~="name"] {
+background-color: pink;}
+이면, background-color:pink를 input한다 placeholder에 "name"이란 글자가 포함되어 있는곳에.
+
+
+# 3.17 States
+<a href="https:hello.com">go to HELLO.com</a> 가 있을때,
+<styl>
+  a:visited {color: tomato;}   // 방문시 색깔
+  a:hover {color: teal;}       // 호버링시 색깔
+  a:focus {color: turquoise;}  // 탭키,입력창 선택시 색깔
+</styl>
+button등일때 button:active{background-color:teal;} 등 사용가능 (클릭시 활성)
+
+    form:focus-within {                //form의 자식인 input이 focus 된다.
+        border-color: seagreen;        //within은 '안쪽'이란뜻. (form이 focus X)
+        }                             //즉, input영역을 클릭시 부모인 form의 border-color가 seagreen색이됨
+  <form>
+    <input type="text" name="" id="" />
+  </form>
+또는 form:hover input:focus {background-color: sienna;} 와 같이 연계도 가능하다.
+form input {}에 form에 hover되있고 input에 focus가 되있을때만 background-color가 작동.
+
+
+# 3.18 Recap
+- state -
+'상태' 라는 뜻으로 태그 뒤에 : 또는 ::를 붙여서 사용한다.
+hover: 위에 호버링할때
+active: 클릭하고있을때
+focus: form에서 혹은 키보드 탭키로 선택했을때
+visited: 방문한적있는 사이트
+focus-within: Chapter 3.17참조.
+
+- combinator -
+Chapter 3.15참조
+
+- attribute -
+input [type="password"] {color:red;}는 password라는 type을 가진 input만 선택.
+
+input[placeholder~="name"] {}는 html에
+<input type="text" placeholder="First name" />
+<input type="text" placeholder="Last name" />
+이 있을때 placeholder="name"이 들어간것을 선택. $끝부분, ^앞부분 ~아무데.
+
+
+# 3.19 Colors and Variables
+<style>
+  :root {
+    --main-color: #279247;
+    --default-border: 1px solid var(--main-color);
+  }
+  div {
+    background-color: var(--main-color);
+  }
+  span {
+    color: var(--main-color);
+    border: var(--default-border);
+  }
+</style>
+:root{--이름:값} 을 해놓은뒤 그 값을 사용하고싶은곳에 var(--이름); 을 사용하면 편리하다.
+
+
+#4.0 Transitions(전환)
+#4.1 Transitions part Two
+a {
+  color: white;
+  background-color: tomato;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 10s ease-in-out, color 5s ease-in-out;
+  }   (transition: all 5s ease-in-out; 도 가능)
+a:hover {
+  color: tomato;
+  background-color: wheat;
+  border-radius: 20px;
+}
+transition은 a의 상태를 a:hover일때 상태로 바꿀때 애니매이션효과를 주는기능이며 a에다 작성한다.
+
+
+#4.2 Transformations
+<style>
+  img {
+    border: 10px solid black;
+    border-radius: 10%;
+    transform: rotate3d(0, 1, 0, 45deg) scale(0.5, 0.5) translateX(-10px)
+      translateY(-10px);
+    transition: all 2s ease-in-out;
+  }
+  img:hover {
+    border-radius: 0%;
+    transform: rotate3d(0, 0, 0, 0deg) scale(2, 2);
+  }
+</style>
+transform(변환): 이미지를 변환 하는법.rotate,scale,translate 등등이 무수히 많이있다.
+transition(변화): 애니매이션효과를 준다. ease-in-out 등등 이 있으며,
+hover,focus등의 부모에다 transition: all 3s ease-in-out과 같이 사용한다.
+
+
+#4.3 Animations part One
+#4.4 Animations part Two
+<style>
+   body {
+     display: flex;
+     height: 100vh;
+     align-items: center;
+     justify-content: center;
+   }
+   @keyframes supersexyjunyoung {
+     0% {
+       transform: rotateY(0) scale(4);
+     }
+     50% {
+       transform: rotateY(180deg) translateX(-1000px) scale(4);
+       border-radius: 50%;
+       border-color: tomato;
+     }
+     100% {
+       transform: rotateY(0) scale(4);
+       border-radius: 10%;
+       border-color: black;
+     }
+   }
+   img {
+     width: 500px;
+     border: 10px solid black;
+     border-radius: 10%;
+     animation: supersexyjunyoung 5s ease-in-out infinite;
+   }
+</style>
+
+
+#4.5 Media Queries
+    <style>
+      body {
+        display: flex;
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+      div {
+        background-color: teal;
+        width: 100px;
+        height: 100px;
+      }
+      @media screen and (min-width: 601px) and (max-width: 1200px) {  
+        /*(가로세로조건 추가):   and (orientation: portrait) { */
+        div {
+          background-color: wheat;
+        }
+      }
+      span {
+        font-size: 20px;
+      }
+      @media screen and (orientation: landscape) {
+        span {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <span>Please flip your phone :)</span>
+  </body>
+</html>
+해석: div와 span을 만든 후 body에 flex 등을 주고 div와 span에도 조건을 주었다.
+그 후, @media screen and (min-width: 601px) and (max-width: 1200px) 즉 최소 최대 스크린사이즈를 준후
+(또는 가로세로 조건 주기도 가능) 조건을 만족할시 div는 background-color:wheat등을 주는 방식으로 작성.
+
+#4.6 Media Queries Recap
+min-device-width, max-device-width 도 있으며 mobile등에만 적용됨.
+@media screen 이외 print 등등이 있으며
+css media query mdn 으로 구글검색해서 여러조건을 보고 사용 가능!
+
+
+
+
+
+
+
+
+

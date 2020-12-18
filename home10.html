@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Junyoung Times</title>
+    <style>
+      body {
+        padding: 1500px 3000px;
+      }
+      img {
+        border: 10px solid black;
+        border-radius: 10%;
+        /* transform: rotateX(0deg) rotateY(60deg) scale(0.5, 0.5); */
+        transform: rotate3d(0, 1, 0, 45deg) scale(0.5, 0.5) translateX(-10px)
+          translateY(-10px);
+        transition: all 2s ease-in-out;
+      }
+      img:hover {
+        border-radius: 0%;
+        /* transform: rotatex(0deg) rotateY(0deg) scale(2, 2); */
+        transform: rotate3d(0, 0, 0, 0deg) scale(2, 2);
+      }
+    </style>
+  </head>
+  <body>
+    <img src="img/hello.jpg" />
+  </body>
+</html>
+
+
